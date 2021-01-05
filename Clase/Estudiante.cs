@@ -6,6 +6,16 @@ namespace Clase
 {
     public class Estudiante : Persona
     {
+        public Estudiante(string carrera, string matricula)
+        {
+            this.Matricula = matricula;
+            this.Carrera = carrera;
+           
+        }
+        public Estudiante()
+        {
+           
+        }
         public string Carrera { get; set; }
         public string Matricula { get; set; }
 

@@ -32,39 +32,47 @@ namespace Clase
         static void ObtenerDatosPersonas()
         {
 
-            Estudiante estudiante = new Estudiante()
+            Estudiante estudiante = new Estudiante("Contabilidad", "7894562")
             {
                 Nombre = "Jose Perez",
                 Apellido = "De Leon",
-                Matricula = "7894562",
-                Carrera = "Contabilidad",
                 Direccion = "Mi direccion",
                 Rut = "123456"
             };
 
-            estudiante.ObtenerNombreCompleto();
-
-            Cliente cliente = new Cliente()
-            {
-                Nombre = "Juan",
-                Apellido = "De los santos",
-                Direccion = "Su direccion",
-                Rut = "4567895",
-                Cuenta = "4567892"
-            };
-
-            Empleado empleado = new Empleado()
-            {
-                Nombre = "Rafael",
-                Apellido = "Gonzales",
-                Direccion = "Otra direccion",
-                Rut = "258552",
-                Sueldo = 800
-            };
-
             estudiante.ImprimirDatos();
-            empleado.ImprimirDatos();
-            cliente.ImprimirDatos();
+
+            Estudiante estudiante2 = new Estudiante()
+            {
+                Nombre = "Jose Perez",
+                Apellido = "De Leon",
+                Direccion = "Mi direccion",
+                Rut = "123456"
+            };
+
+            estudiante2.ImprimirDatos();
+
+            //Cliente cliente = new Cliente()
+            //{
+            //    Nombre = "Juan",
+            //    Apellido = "De los santos",
+            //    Direccion = "Su direccion",
+            //    Rut = "4567895",
+            //    Cuenta = "4567892"
+            //};
+
+            //Empleado empleado = new Empleado()
+            //{
+            //    Nombre = "Rafael",
+            //    Apellido = "Gonzales",
+            //    Direccion = "Otra direccion",
+            //    Rut = "258552",
+            //    Sueldo = 800
+            //};
+
+            //estudiante.ImprimirDatos();
+            //empleado.ImprimirDatos();
+            //cliente.ImprimirDatos();
 
             Console.ReadLine();
         }
