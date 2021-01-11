@@ -7,7 +7,9 @@ namespace Clase
         static void Main(string[] args)
         {
             //ObtenerDatosCuenta();
-            ObtenerDatosPersonas();
+            //ObtenerDatosPersonas();
+            var estudiante = ObtenerEstudiante();
+
             Console.ReadLine();
         }
         static void ObtenerDatosCuenta()
@@ -75,6 +77,40 @@ namespace Clase
             //cliente.ImprimirDatos();
 
             Console.ReadLine();
+        }
+
+        static Estudiante ObtenerEstudiante() 
+        {
+
+            Estudiante estudiante = new Estudiante();
+
+            //var datosEstudiantes = estudiante.ObtenerEstudiante("", "",);
+
+            int personaId = 0;
+
+            string numero = "aaa";
+
+            if (!int.TryParse(numero, out personaId))
+            {
+                Console.WriteLine($"Este campo {numero} es inválido");
+            }
+
+            estudiante.AgregarPersona(new Estudiante() 
+            {
+                Nombre = "Jose Perez",
+                Apellido = "De Leon",
+                Direccion = "Mi direccion",
+                Rut = "123456", 
+                Carrera ="Contabilidad", 
+                Departamento ="Administracion", 
+                Matricula = "101-45255"
+            }, 
+            out personaId);
+
+
+            estudiante.EstudianteId = personaId;
+
+            return estudiante;
         }
     }
 }

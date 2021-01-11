@@ -15,5 +15,8 @@ namespace Clase
         }
         public abstract void ImprimirDatos();
 
+        public abstract void AgregarPersona(Persona persona, out int personaId);
+
+
     }
 }
