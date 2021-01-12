@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Clase.EstudianteExcep;
 namespace Clase
 {
     class Program
@@ -8,7 +8,40 @@ namespace Clase
         {
             //ObtenerDatosCuenta();
             //ObtenerDatosPersonas();
-            var estudiante = ObtenerEstudiante();
+
+            //var estudiante = ObtenerEstudiante();
+
+
+            try
+            {
+                Estudiante estudiante = new Estudiante();
+                int personaId = 0;
+              
+                estudiante.AgregarPersona(new Estudiante()
+                {
+                    Nombre = "Jose Perez",
+                    Apellido = "De Leon",
+                    Direccion = "Mi direccion",
+                    Rut = "123456",
+                    Carrera = "Contabilidad",
+                    Departamento = "Administracion",
+                    Matricula = "101-45255"
+                },
+                out personaId);
+            }
+            catch (EstudianteException exp)
+            {
+                // Logger //
+
+                Console.WriteLine(exp.Message);
+            }
+            catch (Exception ex)
+            {
+                // Logger //
+
+                Console.WriteLine(ex.Message);
+
+            }
 
             Console.ReadLine();
         }
@@ -79,7 +112,7 @@ namespace Clase
             Console.ReadLine();
         }
 
-        static Estudiante ObtenerEstudiante() 
+        static Estudiante ObtenerEstudiante()
         {
 
             Estudiante estudiante = new Estudiante();
@@ -95,16 +128,16 @@ namespace Clase
                 Console.WriteLine($"Este campo {numero} es inválido");
             }
 
-            estudiante.AgregarPersona(new Estudiante() 
+            estudiante.AgregarPersona(new Estudiante()
             {
                 Nombre = "Jose Perez",
                 Apellido = "De Leon",
                 Direccion = "Mi direccion",
-                Rut = "123456", 
-                Carrera ="Contabilidad", 
-                Departamento ="Administracion", 
+                Rut = "123456",
+                Carrera = "Contabilidad",
+                Departamento = "Administracion",
                 Matricula = "101-45255"
-            }, 
+            },
             out personaId);
 
 

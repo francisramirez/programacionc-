@@ -1,5 +1,6 @@
 ﻿
 
+using Clase.EstudianteExcep;
 using System;
 
 namespace Clase
@@ -20,7 +21,33 @@ namespace Clase
            
         }
         public Estudiante() { }
-        public string Carrera { get; set; }
+
+        private string _carrera;
+
+        public string Carrera 
+        {
+            get 
+            { 
+                return _carrera; 
+            }
+            set 
+            {
+                //Validar que no sea nulo//
+
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new EstudianteException($"El campo carrera es requerido..");
+                }
+
+                //Validar que no sea nulo//
+                if (value.Length > 50)
+                {
+                    throw new EstudianteException($"El campo carrera no puede ser mayor a 50 carácteres..");
+                }
+
+                _carrera = value;
+            } 
+        }
         public string Matricula { get; set; }
 
         public string Departamento { get; set; }
@@ -76,6 +103,23 @@ namespace Clase
         public override void AgregarPersona(Persona persona, out int personaId)
         {
             ///insert data //
+
+            try
+            {
+                //int value = int.Parse(persona.Nombre);
+            }
+            catch (EstudianteException exp) 
+            {
+                Console.WriteLine(exp.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ha ocurrido error durante el proceso.");
+            }
+            finally
+            {
+                Console.WriteLine("Entre como quiera"); 
+            }
 
             personaId = 1;
         }
