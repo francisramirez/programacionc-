@@ -33,7 +33,6 @@ namespace CourseManagment
             //    return;
             //}
 
-
             try
             {
                 newEstudiante.Nombre = tbxNombre.Text;
