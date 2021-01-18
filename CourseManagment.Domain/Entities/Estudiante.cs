@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
+using CourseManagment.Domain.Exceptions;
+
 namespace CourseManagment.Domain.Entities
 {
     public class Estudiante : Persona
@@ -9,13 +11,22 @@ namespace CourseManagment.Domain.Entities
         {
             this.estudiantes = new List<Estudiante>();
         }
+
         public string Matricula { get; set; }
         public string Carrera { get; set; }
         public string Departamento { get; set; }
 
         public void AgregarEstudiante(Estudiante estudiante)
         {
-            this.estudiantes.Add(estudiante);
+           
+            try
+            {
+                this.estudiantes.Add(estudiante);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void EliminarEstudiante(string matricula) 

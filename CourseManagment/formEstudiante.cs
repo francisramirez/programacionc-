@@ -1,5 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using CourseManagment.Domain.Entities;
+using CourseManagment.Domain.Exceptions;
 namespace CourseManagment
 {
     public partial class formEstudiante : Form
@@ -15,21 +17,50 @@ namespace CourseManagment
         {
             Estudiante newEstudiante = new Estudiante();
 
-            newEstudiante.Nombre = tbxNombre.Text;
-            newEstudiante.Apellido = tbxApellido.Text;
-            newEstudiante.Carrera = tbxCarrera.Text;
-            newEstudiante.Departamento = tbxDepartamento.Text;
-            newEstudiante.Direccion = tbxDireccion.Text;
-            newEstudiante.Matricula = tbxMat.Text;
-            newEstudiante.Rut = tbxRut.Text;
+            //if (string.IsNullOrEmpty(tbxNombre.Text))
+            //{
+            //    MessageBox.Show("el nombre es requerido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tbxNombre.Focus();
+            //    tbxNombre.BackColor = System.Drawing.Color.Aqua;
+            //    return;
+            //}
 
-            estudianteBL.AgregarEstudiante(newEstudiante);
-           
-            CargarEstudiantes();
-            LimpiarCampos();
-            tbxNombre.Focus();
+            //if (tbxNombre.Text.Length > 50)
+            //{
+            //    MessageBox.Show("La matricula es invalida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    tbxNombre.Focus();
+            //    tbxNombre.BackColor = System.Drawing.Color.Aqua;
+            //    return;
+            //}
 
-            MessageBox.Show("El estudiante fue creado correctamente","Informacion");
+
+            try
+            {
+                newEstudiante.Nombre = tbxNombre.Text;
+                newEstudiante.Apellido = tbxApellido.Text;
+                newEstudiante.Carrera = tbxCarrera.Text;
+                newEstudiante.Departamento = tbxDepartamento.Text;
+                newEstudiante.Direccion = tbxDireccion.Text;
+                newEstudiante.Matricula = tbxMat.Text;
+                newEstudiante.Rut = tbxRut.Text;
+
+                estudianteBL.AgregarEstudiante(newEstudiante);
+
+                CargarEstudiantes();
+                LimpiarCampos();
+                tbxNombre.Focus();
+                MessageBox.Show("El estudiante fue creado correctamente", "Informacion");
+            }
+            catch(PersonaException pex) 
+            {
+                MessageBox.Show(pex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error tratando de agregar el estudiante", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+         
         }
 
         private void CargarEstudiantes()
