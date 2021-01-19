@@ -12,5 +12,7 @@ namespace CourseManagment.Domain.Interfaces
         TEntity ObtenerEntity(int Id);
         List<TEntity> ObtenerRegistros();
 
+       
+
     }
 }

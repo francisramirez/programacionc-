@@ -1,6 +1,7 @@
 ﻿using CourseManagment.Domain.Interfaces;
 using CourseManagment.Domain.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseManagment.Domain.BL
 {
@@ -18,12 +19,13 @@ namespace CourseManagment.Domain.BL
 
         public void Eliminar(Profesor entity)
         {
-            var profesor = this.ObtenerEntity(entity.ProfesorId);
-            this.profesors.Remove(profesor);
+            this.profesors.Remove(entity);
         }
 
         public void Guardar(Profesor entity)
         {
+            entity.ProfesorId = this.profesors.Count == 0 ? 1 : this.profesors.Max(profesor => profesor.ProfesorId) + 1;
+                     
             this.profesors.Add(entity);
         }
 
