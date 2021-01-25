@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CourseManagment.Domain.BL
 {
-    public class ProfesorBL : IBaseEntity<Profesor>, IProfesor
+    public class ProfesorBL : IProfesor
     {
         private List<Profesor> profesors;
         public ProfesorBL()
@@ -52,6 +52,11 @@ namespace CourseManagment.Domain.BL
         public List<Profesor> ObtenerRegistros()
         {
             return this.profesors;
+        }
+
+        public string PublicarNota() 
+        {
+            return "Publique la nota";
         }
     }
 }

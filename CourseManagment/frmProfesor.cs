@@ -1,12 +1,13 @@
 ﻿using System.Windows.Forms;
 using CourseManagment.Domain.BL;
 using CourseManagment.Domain.Entities;
+using CourseManagment.Domain.Interfaces;
 
 namespace CourseManagment
 {
     public partial class frmProfesor : Form
     {
-        private ProfesorBL profesorBL;
+        private IProfesor profesorBL;
 
         public frmProfesor()
         {

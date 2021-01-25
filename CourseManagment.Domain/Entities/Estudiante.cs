@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System;
-using CourseManagment.Domain.Exceptions;
 
 namespace CourseManagment.Domain.Entities
 {
@@ -15,6 +14,7 @@ namespace CourseManagment.Domain.Entities
         public string Matricula { get; set; }
         public string Carrera { get; set; }
         public string Departamento { get; set; }
+
 
         public void AgregarEstudiante(Estudiante estudiante)
         {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace CourseManagment.Domain.Interfaces
 {
@@ -11,8 +9,6 @@ namespace CourseManagment.Domain.Interfaces
         void Eliminar(TEntity entity);
         TEntity ObtenerEntity(int Id);
         List<TEntity> ObtenerRegistros();
-
-       
 
     }
 }
