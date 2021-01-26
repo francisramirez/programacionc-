@@ -1,47 +1,69 @@
 ﻿using System;
-using Clase.EstudianteExcep;
+using System.IO;
+using System.Linq;
 namespace Clase
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //ObtenerDatosCuenta();
-            //ObtenerDatosPersonas();
+            //string nombreArchivo = "WriteLines.txt";
+            string ruta = @"C:\Archivos\";
+            //ruta = $"{ruta}{nombreArchivo}";
 
-            //var estudiante = ObtenerEstudiante();
+
+            //string[] lines = { "First line", "Second line", "Third line", "4ta line" };
+
+            //if (File.Exists(ruta))
+            //    File.Delete(ruta);
 
 
-            try
+            
+            //File.WriteAllLines(ruta, lines);
+
+
+            //string text = "A class is the most powerful data type in C#. Like a structure, " +
+            //           "a class defines the data and behavior of the data type. ";
+
+            //string nombreArchivoText = "WriteLinesText.txt";
+
+             //ruta = $"{ruta}{nombreArchivoText}";
+
+            //if (File.Exists(ruta))
+            //    File.Delete(ruta);
+
+            //File.WriteAllText(ruta, text);
+
+
+
+            //Para leer los archivos //
+
+            //string[] lines = File.ReadAllLines(ruta);
+
+            //foreach (var linea in lines)
+            //{
+            //    Console.WriteLine(linea);
+            //}
+
+
+            //string[] files = Directory.GetFiles(ruta);
+
+            DirectoryInfo directoryInfo = new DirectoryInfo(ruta);
+
+
+            FileInfo[] files = directoryInfo.GetFiles().Where(cd => cd.CreationTime.Date == DateTime.Now.Date).ToArray();
+
+            foreach (var file in files)
             {
-                Estudiante estudiante = new Estudiante();
-                int personaId = 0;
-              
-                estudiante.AgregarPersona(new Estudiante()
-                {
-                    Nombre = "Jose Perez",
-                    Apellido = "De Leon",
-                    Direccion = "Mi direccion",
-                    Rut = "123456",
-                    Carrera = "Contabilidad",
-                    Departamento = "Administracion",
-                    Matricula = "101-45255"
-                },
-                out personaId);
-            }
-            catch (EstudianteException exp)
-            {
-                // Logger //
+                string[] text = File.ReadAllLines(file.FullName);
 
-                Console.WriteLine(exp.Message);
+                Console.WriteLine(file.FullName);
             }
-            catch (Exception ex)
-            {
-                // Logger //
 
-                Console.WriteLine(ex.Message);
 
-            }
+           // string text = File.ReadAllText(ruta);
+
+            //Console.WriteLine(text);
 
             Console.ReadLine();
         }
@@ -126,6 +148,7 @@ namespace Clase
             if (!int.TryParse(numero, out personaId))
             {
                 Console.WriteLine($"Este campo {numero} es inválido");
+             
             }
 
             estudiante.AgregarPersona(new Estudiante()
