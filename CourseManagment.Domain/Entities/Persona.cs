@@ -3,7 +3,7 @@ using CourseManagment.Domain.Exceptions;
 
 namespace CourseManagment.Domain.Entities
 {
-    public abstract class Persona
+    public abstract class Persona  
     {
         private string _nombre;
 

@@ -1,34 +1,24 @@
-﻿using CourseManagment.Domain.Entities;
+﻿
+using CourseManagment.Domain.Entities;
 using CourseManagment.Domain.Interfaces;
-using System.Collections.Generic;
-
+using System.Linq;
 namespace CourseManagment.Domain.BL
 {
-    public class ClienteBL : IBaseEntity<Cliente>
+    public class ClienteBL : BaseBL<Cliente>, ICliente
     {
-        public void Actualizar(Cliente entity)
+        public Cliente ObtenerClientePorCuenta(string cuenta)
         {
-            throw new System.NotImplementedException();
+            return base.Entities.SingleOrDefault(cliente => cliente.Cuenta == cuenta);
         }
-
-        public void Eliminar(Cliente entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Guardar(Cliente entity)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public Cliente ObtenerEntity(int Id)
         {
-            throw new System.NotImplementedException();
+            return base.Entities.Find(cliente => cliente.ClienteId == Id);
         }
-
-        public List<Cliente> ObtenerRegistros()
+        public override void Guardar(Cliente entity)
         {
-            throw new System.NotImplementedException();
+            entity.ClienteId = base.Entities.Count == 0 ? 1 : base.Entities.Max(cliente => cliente.ClienteId) + 1;
+            base.Guardar(entity);
         }
+       
     }
 }
