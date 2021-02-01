@@ -35,7 +35,6 @@ namespace Clase
             //File.WriteAllText(ruta, text);
 
 
-
             //Para leer los archivos //
 
             //string[] lines = File.ReadAllLines(ruta);
