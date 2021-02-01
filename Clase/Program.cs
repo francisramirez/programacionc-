@@ -7,6 +7,10 @@ namespace Clase
     {
         static void Main(string[] args)
         {
+
+            // Cambio que debe de ir al servidor remoto.//
+
+
             //string nombreArchivo = "WriteLines.txt";
             string ruta = @"C:\Archivos\";
             //ruta = $"{ruta}{nombreArchivo}";
